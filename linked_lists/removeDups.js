@@ -17,15 +17,13 @@ function removeDupes(list) {
     return list;
 }
 
-let list = new LinkedList();
+const list = new LinkedList();
 for (let elem of [1, 5, 1, 6, 8, 6, 8, 8, 8, 8]) {
     list.insertLast(elem);
 }
 
 console.log('list before ',list._toArray());
-
 removeDupes(list);
-
 console.log(list._toArray()); // [1, 5, 6, 8]
 
 // Without taking extra space, n^2
@@ -47,7 +45,5 @@ function removeDupes2(list) {
 }
 
 console.log('list before ',list._toArray());
-
 removeDupes2(list);
-
 console.log(list._toArray()); // [1, 5, 6, 8]
