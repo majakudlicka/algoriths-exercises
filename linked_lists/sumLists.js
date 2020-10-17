@@ -1,12 +1,5 @@
 const LinkedList = require('./util/linkedList');
 
-class Node {
-    constructor(data, next = null) {
-        this.data = data;
-        this.next = null
-    }
-}
-
 // iterative approach, converting LLs into numbers
 function sumLists(list1, list2) {
     let node1 = list1.head;
@@ -92,13 +85,13 @@ function padWithZeros(list, padding) {
 
 
 function addNodes(list, node1, node2) {
-    if (node1 === null && node2 === null) {
+    if (!node1 && !node2) {
         return { sum: null, carry: 0 };
     }
     const partialSum = addNodes(list, node1.next, node2.next);
-    const val = partialSum.carry + node1.data + node2.data;
-    partialSum.sum = list.insertFirst(val % 10);
-    partialSum.carry = (val - val % 10) / 10;
+    let value = partialSum.carry + node1.data + node2.data;
+    partialSum.sum = list.insertFirst(value % 10);
+    partialSum.carry = (value - value % 10) /10;
     return partialSum;
 }
 
