@@ -37,19 +37,19 @@ function isPalindrome(list) {
     return true;
 }
 
-// const list = new LinkedList();
-// for (let i = 1; i <= 10; i++) {
-//     list.insertLast(i);
-// }
-// // false
-// console.log(isPalindrome(list));
-//
-// const list1 = new LinkedList();
-// for (let elem of [1,2,5,2,1]) {
-//     list1.insertLast(elem);
-// }
-// // true
-// console.log(isPalindrome(list1));
+const list = new LinkedList();
+for (let i = 1; i <= 10; i++) {
+    list.insertLast(i);
+}
+// false
+console.log(isPalindrome(list));
+
+const list1 = new LinkedList();
+for (let elem of [1,2,5,2,1]) {
+    list1.insertLast(elem);
+}
+// true
+console.log(isPalindrome(list1));
 
 // Use stack. Move first half of the list onto a stack and then compare it to the other half of the list
 // (Elements coming off the stack will be in reversed order). If we don't know the length, can calculate it
@@ -80,16 +80,45 @@ function isPalindrome2(list) {
 
 }
 
-const list = new LinkedList();
+const list2 = new LinkedList();
 for (let i = 1; i <= 10; i++) {
-    list.insertLast(i);
+    list2.insertLast(i);
 }
 // false
 console.log(isPalindrome2(list));
 
-const list1 = new LinkedList();
+const list3 = new LinkedList();
 for (let elem of [1,2,5,2,1]) {
-    list1.insertLast(elem);
+    list3.insertLast(elem);
 }
 // true
 console.log(isPalindrome2(list1));
+
+//
+function isPalindrome3(list) {
+ if (!list.head) return true;
+ const { result } = isPalindromeRecursive(list.head, list.size());
+ return result;
+}
+
+function isPalindromeRecursive(head, length) {
+    if (length <= 0) return { node: head, result: true } // even number of nodes
+    if (length === 1) return  { node: head.next, result: true } // odd number of nodes
+    const { result, node } = isPalindromeRecursive(head.next, length - 2);
+    if (result === false || head.data !== node.data) return { node: null, result: false };
+    return { node: node.next, result: true };
+}
+
+const list4 = new LinkedList();
+for (let i = 1; i <= 10; i++) {
+    list4.insertLast(i);
+}
+// false
+console.log(isPalindrome3(list));
+
+const list5 = new LinkedList();
+for (let elem of [2,1,5,1,2]) {
+    list5.insertLast(elem);
+}
+// true
+console.log(isPalindrome3(list1));
