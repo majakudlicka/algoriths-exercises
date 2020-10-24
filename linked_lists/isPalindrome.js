@@ -79,46 +79,27 @@ function isPalindrome2(list) {
     return true;
 
 }
-
-const list2 = new LinkedList();
-for (let i = 1; i <= 10; i++) {
-    list2.insertLast(i);
-}
 // false
 console.log(isPalindrome2(list));
-
-const list3 = new LinkedList();
-for (let elem of [1,2,5,2,1]) {
-    list3.insertLast(elem);
-}
 // true
 console.log(isPalindrome2(list1));
 
-//
+// Recursive
 function isPalindrome3(list) {
- if (!list.head) return true;
- const { result } = isPalindromeRecursive(list.head, list.size());
- return result;
+    if (!list.head) return false;
+    const { result } = isPalindromeRecursive(list.head, list.size());
+    return result;
 }
 
 function isPalindromeRecursive(head, length) {
-    if (length <= 0) return { node: head, result: true } // even number of nodes
-    if (length === 1) return  { node: head.next, result: true } // odd number of nodes
-    const { result, node } = isPalindromeRecursive(head.next, length - 2);
-    if (result === false || head.data !== node.data) return { node: null, result: false };
+    if (length <= 0) return { node: head, result: true };
+    if (length === 1) return { node: head.next, result: true };
+    const { node, result } = isPalindromeRecursive(head.next, length - 2);
+    if (result === false || node.data !== head.data) return { node: null, result: false };
     return { node: node.next, result: true };
 }
 
-const list4 = new LinkedList();
-for (let i = 1; i <= 10; i++) {
-    list4.insertLast(i);
-}
 // false
 console.log(isPalindrome3(list));
-
-const list5 = new LinkedList();
-for (let elem of [2,1,5,1,2]) {
-    list5.insertLast(elem);
-}
 // true
 console.log(isPalindrome3(list1));

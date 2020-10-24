@@ -91,31 +91,7 @@ function intersection(list1, list2) {
     }
     return res;
 }
-
-const list5 = new LinkedList();
-for (let elem of [1,2,5,2,1]) {
-    list5.insertLast(elem);
-}
-const intersectingNode2 = list5.head.next.next; // 5
-
-const list6 = new LinkedList();
-for (let elem of [9,9,7]) {
-    list6.insertLast(elem);
-}
-
-list6.head.next.next.next = intersectingNode2;
 // true
-console.log(intersection2(list5, list6));
-
-const list7 = new LinkedList();
-for (let elem of [1,2,5,2,1]) {
-    list7.insertLast(elem);
-}
-
-const list8 = new LinkedList();
-for (let elem of [9,9,7,5,2,1]) {
-    list8.insertLast(elem);
-}
-
+console.log(intersection2(list1, list2));
 // false
-console.log(intersection2(list7, list8));
+console.log(intersection2(list3, list4));
