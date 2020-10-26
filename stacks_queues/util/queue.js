@@ -19,20 +19,25 @@ class Queue {
 
 	add(el) {
 		const node = new Node(el);
-		if (this.isEmpty()) {
-			this.first = node;
-			this.last = node;
-		} else {
+		if (this.last) {
 			this.last.next = node;
-			this.last = node;
+		}
+		this.last = node;
+		if (!this.first) {
+			this.first = node;
 		}
 	}
 
 	remove() {
 		if (this.isEmpty()) throw new Error('No such element');
 		let temp = this.first;
-		this.first = this.first.next;
-		if (this.first === null) this.last = null;
+		if (this.first === this.last) {
+			this.first = null;
+			this.last = null;
+		}
+		else {
+			this.first = this.first.next;
+		}
 		return temp.data;
 	}
 
