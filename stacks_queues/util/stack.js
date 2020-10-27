@@ -28,6 +28,10 @@ class Stack {
 			str += this.items[i] + " ";
 		return str;
 	}
+
+	size() {
+		return this.items.length;
+	}
 }
 
 module.exports = Stack;
