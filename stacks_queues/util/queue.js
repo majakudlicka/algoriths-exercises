@@ -1,6 +1,7 @@
 class Node {
 	constructor(data) {
 		this.data = data;
+		this.next = null;
 	}
 }
 // Queue is better implemented as a linked list than as an array because adding elements to the beginning of array
