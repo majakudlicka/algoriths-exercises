@@ -1,20 +1,4 @@
-class Node {
-	constructor(data) {
-		this.data = data;
-		this.left = null;
-		this.right = null;
-	}
-
-	addLeft(data) {
-		this.left = new Node(data);
-		return this.left;
-	}
-
-	addRight(data) {
-		this.right = new Node(data);
-		return this.right;
-	}
-}
+const { BT } = require('./util/BinaryTree');
 
 /**
  *
@@ -38,7 +22,7 @@ function dfs(rootNode, targetNode) {
 	return dfs(rootNode.left, targetNode) || dfs(rootNode.right, targetNode);
 }
 
-const H = new Node('H');
+const H = new BT('H');
 const G = H.addLeft('G');
 const F = G.addLeft('F');
 const I = G.addRight('I');

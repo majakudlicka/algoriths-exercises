@@ -1,4 +1,4 @@
-const Tree = require('./util/BST');
+const { BST } = require('./util/BinaryTree');
 const LinkedList = require('../linked_lists/util/linkedList');
 const Queue = require('../stacks_queues/util/queue');
 

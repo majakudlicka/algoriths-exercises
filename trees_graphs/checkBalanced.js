@@ -1,4 +1,4 @@
-const BST = require('./util/BST');
+const { BST } = require('./util/BinaryTree');
 
 /**
  * This function attempts to check if the tree is balanced

@@ -1,4 +1,4 @@
-const BST = require('./util/BST');
+const { BST } = require('./util/BinaryTree');
 
 class BinaryTree {
 	constructor(value) {
