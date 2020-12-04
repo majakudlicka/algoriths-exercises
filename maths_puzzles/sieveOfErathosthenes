@@ -1,0 +1,33 @@
+// Check if numbers are prime up to a max
+function primeChecker(max) {
+	const primeFlags = new Array(max);
+	primeFlags.fill(true);
+	primeFlags[0] = false;
+	primeFlags[1] = false;
+
+	let prime = 2;
+
+	while (prime < Math.sqrt(max)) {
+		crossOff(primeFlags, prime);
+		prime = findNextPrime(primeFlags, prime + 1);
+	}
+
+	return primeFlags;
+}
+
+function crossOff(flags, prime) {
+	for (let i = prime*prime; i < flags.length ; i+= prime) {
+		flags[i] = false;
+	}
+}
+
+function findNextPrime(flags, i) {
+	while (flags[i] === false) {
+		i++;
+	}
+	return i;
+}
+
+const res = primeChecker(20);
+console.log('res ', res.map((isPrime, number) => ({ number, isPrime })));
+
