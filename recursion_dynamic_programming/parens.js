@@ -1,3 +1,7 @@
+function init(n) {
+	return buildParensPerms([], n, n, [], 0);
+}
+
 /**
  * Builds permutations of requested number of valid parens
  * @param permutations
@@ -22,6 +26,7 @@ function buildParensPerms(permutations = [], remainingLeft, remainingRight, curr
 	return permutations;
 }
 
-const res = buildParensPerms([], 2, 2, [], 0 );
+
+const res = init(3);
 
 console.log('res is ', res);
