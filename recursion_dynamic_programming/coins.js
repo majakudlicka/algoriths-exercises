@@ -7,31 +7,36 @@ const denominations = [25, 10, 5, 1];
  * @param index
  * @param cache
  */
-function makeChange(total, index, cache = {}) {
-	const coin = denominations[index];
+function makeChange(total, index, cache) {
+	if (!cache) cache = makeCache();
+
+	if (cache[index][total]) {
+		return cache[index][total];
+	}
+
 	if (index === denominations.length - 1) {
 		return 1;
 	}
 
+	const coin = denominations[index];
 	let ways = 0;
+
 	for (let amount = 0; amount <= total; amount += coin) {
 		const newIndex = index + 1;
 		const newAmount = total - amount;
-		let cached = cache[newIndex] && cache[newIndex][newAmount];
-		if (cached) {
-			ways += cached;
-		} else {
-			const newWays = makeChange(newAmount, newIndex, cache);
-			ways += newWays;
-			if (!cache[newIndex]) cache[newIndex] = {};
-			cache[newIndex][newAmount] = newWays;
-		}
+		ways += makeChange(newAmount, newIndex, cache);
 	}
 
+	cache[index][total] = ways;
 	return ways;
+}
 
+function makeCache() {
+	const cache = {};
+	denominations.forEach((d, i) => cache[i] = {});
+	return cache;
 }
 
 //2 for 5, 9 for 20, 121 for 77
-const res = makeChange(20, 0);
+const res = makeChange(300, 0);
 console.log('res is ', res);
