@@ -38,5 +38,5 @@ function makeCache() {
 }
 
 //2 for 5, 9 for 20, 121 for 77
-const res = makeChange(300, 0);
+const res = makeChange(77, 0);
 console.log('res is ', res);
